@@ -11,6 +11,11 @@ class ContactForm extends Component {
     this.setState({ [name]: value });
   };
 
+  handleNumberChange = event => {
+    const number = event.target.value.replace(/[^0-9+-]/g, '');
+    this.setState({ number });
+  };
+
   handleSubmit = event => {
     event.preventDefault();
     const { name, number } = this.state;
@@ -39,12 +44,12 @@ class ContactForm extends Component {
           />
         </label>
         <label>
-          Number:
+          Phone number:
           <input
             type="tel"
             name="number"
             value={number}
-            onChange={this.handleChange}
+            onChange={this.handleNumberChange}
             required
           />
         </label>
